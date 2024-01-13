@@ -4,7 +4,7 @@ import { config } from "dotenv";
 config()
 
 
-export const connection = mysql.createPool({
+export const pool = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
@@ -13,7 +13,7 @@ export const connection = mysql.createPool({
 });
 
 export function db() {
-    if(connection) {
+    if(pool) {
         console.log("database is online");
     }else{
         console.log("could not connect to database");

@@ -1,6 +1,6 @@
 import { request, response } from "express";
 import bcryptjs from "bcryptjs";
-import { connection } from "../DB/db.js";
+import { pool } from "../DB/db.js";
 import { generateToken } from "../helpers/generateToken.js";
 
 export const createUser = async (req = request, res = response) => {
@@ -12,7 +12,7 @@ export const createUser = async (req = request, res = response) => {
         const sql = "INSERT INTO users(name , username , password , email) VALUES (? , ? , ? , ?)"
         const values = [name , username , encryptedPassword , email]
 
-        const [results] = await connection.query(sql , values);
+        const [results] = await pool.query(sql , values);
 
         return res.status(200).json({
             status:"Success",
@@ -30,7 +30,7 @@ export const login = async (req = request , res = response) => {
         const sql = "SELECT * FROM users WHERE username = ?";
         const values = [username];
 
-        const [results] = await connection.query(sql , values);
+        const [results] = await pool.query(sql , values);
 
         if (results <= 0) {
             throw new Error("this username does not exist in the DB")
