@@ -3,7 +3,8 @@ import cors from "cors";
 import morgan from "morgan";
 import { config } from "dotenv";
 import { loginRouter } from "./routes/loginRoutes.js";
-import { orderRouter } from "../backend/routes/orderRoutes.js";
+import { orderRouter } from "./routes/orderRoutes.js";
+
 
 config();
 
@@ -12,7 +13,8 @@ export class Server {
         this.app = express();
         this.port = process.env.PORT;
         this.patch = {
-            api: "/api"
+            api: "/api",
+            
         };
 
         this.middleware();
@@ -28,6 +30,7 @@ export class Server {
     routes(){
         this.app.use(this.patch.api , loginRouter);
         this.app.use(this.patch.api , orderRouter);
+      
     }
 
     listen() {

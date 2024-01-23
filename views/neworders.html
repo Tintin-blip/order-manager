@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Globally - Solicitud pedidos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+
+    <style>
+        body {
+            display: flex;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            overflow: hidden;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+       
+        #photo-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        #background-img {
+            width: 100%;
+            height: 100%;
+            opacity: 0.3;
+        }
+
+        form, table {
+            border: 1px solid #ccc;
+            padding: 20px;
+            max-width: 400px;
+            background-color: #fff;
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        table {
+            width: 70%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            max-width: 100%; /* Evita que la tabla se estire más allá del 100% del contenedor */
+            overflow-y: auto; /* Agrega una barra de desplazamiento horizontal si es necesario */
+            background-color: rgba(255, 255, 255, 0.3); 
+
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .lapiz-button, .basura-button {
+            padding: 8px 12px;
+            margin-right: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .lapiz-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .basura-button {
+            background-color: #f44336;
+            color: white;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 20%;
+
+        }
+
+        form select,
+        form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+   
+    <div id="photo-container">
+        <img id="background-img" src="images/Sin título.png" alt="">
+    </div>
+
+    <form>
+        <h2 class="text-center text-secondary">Solicitar pedido</h2>
+        <select id="productoSelect">
+            <option value="4">TV</option>
+            <option value="5">Laptop</option>
+            <option value="6">PC</option>
+            <option value="7">GPU</option>
+        </select>
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" name="cantidad" required><br>
+        <button type="button" onclick="addOrder()">Agregar</button>
+        <p id="tvCosto">Tv:120$</p>
+        <p id="laptopCosto">Laptop:300$</p>
+        <p id="pcCosto">Pc:250$</p>
+        <p id="gpuCosto">GPU:160$</p>
+    </form>
+
+    <table id="table">
+       
+        <thead>
+        
+            <tr>
+                <th>Código orden</th>
+                <th>Nombre</th>
+                <th>Cantidad</th>
+                <th>Código producto</th>
+                <th>Precio</th>
+                <th>Acciones</th>
+                
+            </tr>
+        </thead>
+        <tbody id="bodyProductos">
+        </tbody>
+    </table>
+    <script src="/views/JS/orders.js"></script>
+</body>
+</html>

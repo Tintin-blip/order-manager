@@ -10,6 +10,21 @@ export const verifyEmail = async (value , {req}) => {
         throw new Error("this email already exist in the DB");
     };
 };
+export const verifyUsernamePassword = async (value , {req,res}) => {
+    const sql = "SELECT * FROM users WHERE username = ?";
+    const values = [value];
+
+    const [rows] = await pool.query(sql , values);
+    console.log(rows)
+
+    if (rows.length !== 0) {
+        console.log('Usuario encontrado en la base de datos');
+        return true;
+    } else if  (rows.length === 0 ) {
+        
+        throw new Error('Este usuario no existe en la base de datos')
+    }
+};
 
 export const verifyUsername = async (value , {req}) => {
     const sql = "SELECT * FROM users WHERE username = ?";
@@ -21,6 +36,7 @@ export const verifyUsername = async (value , {req}) => {
         throw new Error("this username already exist in the DB");
     };
 };
+
 
 export const verifyProduct = async (value , {req}) => {
     const sql = "SELECT * FROM products WHERE id = ?";

@@ -3,7 +3,7 @@ import { check } from "express-validator";
 import { validateFields } from "../middlewares/validateFields.js";
 import { verifyToken } from "../middlewares/verifyToken.js";
 import { verifyUser } from "../middlewares/verifyUser.js";
-import { addOrder , getProducts , getOrder , patchOrder, deleteOrder } from "../controllers/orderController.js";
+import { addOrder , getProducts , getOrder , patchOrder, deleteOrder, getOrderWithProductDetails } from "../controllers/orderController.js";
 import { verifyOrder , verifyProduct } from "../helpers/DBvalidations.js";
 
 const orderRouter = express.Router();
@@ -26,6 +26,10 @@ orderRouter.get("/order/getOrder/:idUser",[
     verifyUser,
 ] , getOrder);
 
+orderRouter.post("/order/getOrderWithDetails/:idUser", [
+    verifyToken,
+    verifyUser,
+],getOrderWithProductDetails)
 orderRouter.patch("/order/updateOrder/:idUser",[
     verifyToken,
     verifyUser,

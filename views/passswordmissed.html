@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Globally - Sistema de Gestión</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ecf0f1; /* Cambiado el color de fondo */
+            overflow: hidden; /* Evitar barras de desplazamiento horizontales */
+        }
+
+        header {
+            background-color: #2980b9; /* Color azul más oscuro */
+            color: white; /* Texto blanco */
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            margin: 0 15px; /* Aumentado el espacio entre enlaces */
+            text-decoration: none;
+            color: #ecf0f1; /* Color del texto ajustado */
+            font-size: 18px; /* Aumentado el tamaño de fuente */
+        }
+
+        #user-icon {
+            margin-left: 15px;
+            font-size: 22px; /* Aumentado el tamaño del icono */
+        }
+
+        body {
+            text-align: center;
+        }
+
+        #photo-container {
+            width: 100vw; /* Tomar el 100% del ancho de la ventana */
+            height: 100vh; /* Tomar el 100% de la altura de la ventana */
+            position: relative;
+            overflow: hidden; /* Evitar barras de desplazamiento */
+        }
+
+        #background-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ajustar imagen manteniendo la relación de aspecto y cubriendo el contenedor */
+        }
+
+        #login-form {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 30px; /* Aumentado el espacio alrededor del formulario */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Aumentado el tamaño de la sombra */
+            display: flex; /* Hacer que los elementos estén en línea */
+            align-items: center; /* Centrar verticalmente los elementos */
+        }
+
+        #login-form img {
+            width: 80px; /* Ajusta el ancho del logo según tu necesidad */
+            margin-right: 20px; /* Aumentado el espacio entre el logo y el formulario */
+        }
+
+        #login-form label {
+            display: block;
+            margin-bottom: 15px; /* Aumentado el espacio entre etiquetas y campos de entrada */
+        }
+
+        #login-form input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px; /* Aumentado el espacio entre campos de entrada */
+            box-sizing: border-box;
+        }
+
+        #login-btn, #register-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 15px 20px; /* Aumentado el espacio alrededor de los botones */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+            font-size: 16px; 
+        }
+        #error-user {
+            color: red;
+        }#error-username {
+            color: red;
+        }
+        #good {
+            color:green
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Globally</h1>
+        <nav>
+            <a href="/views/index.html">Inicio</a>
+            <a href="/views/login.html">Iniciar Sesión</a>
+            <span id="user-icon">👤</span>
+        </nav>
+    </header>
+
+    <div id="photo-container">
+        <img id="background-img" src="images/Sin título.png" alt="">
+        <div id="login-form">
+            
+            <form>
+                <h2>Recuperar contraseña</h2>
+
+                <label for="username">Nombre de Usuario:</label>
+                <input type="text" id="username" name="username" required>
+                
+                <label for="password"> Nueva contraseña:</label>
+                
+                <input type="password" id="password" name="password" required>
+                <label for="password">Repite la nueva contraseña:</label>
+                <input type="password" id="new-password" name="password" required>
+                <p id ='error-user'>Las contraseñas no son iguales</p>
+                <p id ='error-username'>Este usuario no existe</p>
+                <p id ='good'>Contraseña cambiada con exito</p>
+                <button id="login-btn" onclick="change()">Ingresar</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="/views/JS/password.js"></script>
+</body>
+</html>
